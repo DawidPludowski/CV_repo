@@ -1,0 +1,36 @@
+#title {
+	float: left;
+	text-align: center;
+}
+
+.container {
+	display: grid;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+}
+
+.output-wrapper {
+	display: grid;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	justify-content: center;
+	text-align: center;
+}
+
+#canvas {
+	border: 3px solid #000000;
+	border-radius: 16px;
+	position: relative;
+	margin: auto;
+}
+
+#resize-canvas {
+	border: 3px solid #000000;
+	border-radius: 5px;
+}
+
+#fetch-text {
+	font-size: 100px;
+}

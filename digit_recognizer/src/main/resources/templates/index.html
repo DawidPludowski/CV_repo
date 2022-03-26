@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>Digit recognizer</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{app.js}"></script>
+<link th:href="@{/style.css}" rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.css}"
+	rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+	<div class="container my-5">
+
+		<div class="position-absolute top-0 start-0">
+			<a class="btn btn-secondary" type="button" href="/" onclick="logout()">Logout</a>
+		</div>
+
+		<div class="row">
+			<h1 class="text-center mb-4">Digit recognizer</h1>
+		</div>
+		<div class="row d-flex justify-content-evenly">
+			<div class="col my-auto">
+				<button type="button"
+					class="btn btn-secondary my-4 btn-lg w-100 h-25"
+					onclick="resetImage()">reset</button>
+				<button type="button" class="btn btn-primary my-4 btn-lg w-100 h-25"
+					onclick="sendImage()">submit</button>
+			</div>
+			<canvas id="canvas" width="400" height="400" class="col"></canvas>
+			<div class="col d-flex justify-content-center">
+				<div sec:authorize="isAuthenticated()" class="my-auto">
+					<div class="h1 text-center"
+						th:text="'Hi, '+${userStatistics.username}+'!'"></div>
+					<div class="h5 text-center">All guesses:</div>
+					<div class="h2 text-center" th:text="${userStatistics.allGuesses}"></div>
+					<div class="h5 text-center">Correct guesses:</div>
+					<div class="h2 text-center"
+						th:text="${userStatistics.correctGuesses}"></div>
+					<div class="h5 text-center">Correct/all ratio:</div>
+					<div th:with="ratio=${userStatistics.allGuesses} != 0? ${userStatistics.correctGuesses}/${userStatistics.allGuesses}*100 : '-'">
+						<div class="h2 text-center"
+						th:text="${ratio} != '-' ? ${#numbers.formatDecimal(ratio, 0, 'COMMA', 2, 'POINT')} + '%' : '-'"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Toast -->
+	<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+		<div id="registrationToast" class="toast hide bg-info" role="alert"
+			aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<strong class="me-auto">Digit recognizer</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast"
+					aria-label="Close"></button>
+			</div>
+			<div class="toast-body" id="toast-body">Registration ended with
+				success!</div>
+		</div>
+	</div>
+
+	<!-- send feedback to server modal -->
+	<div class="modal fade" id="feedbackModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Results</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="res-input"></div>
+				<div class="modal-footer">
+					<button type="button" id="success-button" class="btn btn-success"
+						data-bs-dismiss="modal" onclick="sendResponse(true)">Yes</button>
+					<button type="button" id="fail-button" class="btn btn-danger"
+						data-bs-dismiss="modal" onclick="sendResponse(false)">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- request login/register modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title center-text" id="exampleModalLabel">Welcome!</h1>
+				</div>
+				<div class="modal-body" id="res-input">
+
+					<div class="row d-flex justify-content-center">
+						<a type="button" id="login-button" class="btn btn-primary w-25"
+							href="/login">Login</a>
+						<div class=w-100></div>
+						<h5 class="text-center">or</h5>
+						<div class="w-100"></div>
+						<a type="button" id="register-button"
+							class="btn btn-secondary w-25" href="/register">Register</a>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.js}"></script>
+
+	<script sec:authorize="!isAuthenticated()">
+		let loginModal = new bootstrap.Modal(document
+				.getElementById('loginModal'), {
+			keyboard : false
+		});
+		loginModal.show();
+	</script>
+
+	<script
+		th:if="${(param.successfulRegistration != null) and (param.successfulRegistration[0] == 'true')}">
+	    var myAlert =document.getElementById('registrationToast');//select id of toast
+	    var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
+	    bsAlert.show();//show it
+	</script>
+
+</body>
+</html>

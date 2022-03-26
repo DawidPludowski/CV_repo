@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.css}"
+	rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<div class="container min-vh-100">
+		<div class="d-flex flex-column align-items-center"
+			style="margin: 0; position: absolute; top: 40%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+			<div class="row">
+				<h1 class="my-3">Register</h1>
+			</div>
+
+			<div class="row">
+				<form action="/register" th:object="${user}" method="POST"
+					enctype="utf8">
+
+					<div class="row">
+						<div class="col m-2">
+							<label class="float-end">Username :</label>
+						</div>
+						<div class="col m-2">
+							<div>
+								<input
+									th:placeholder="${#fields.hasErrors('username')} ? ${#fields.errors('username')[0]}"
+									th:field="*{username}" />
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col m-2">
+							<label class="float-end">Password: </label>
+						</div>
+						<div class="col m-2">
+							<input type="password"
+								th:placeholder="${#fields.hasErrors('password')} ? ${#fields.errors('password')[0]}"
+								th:field="*{password}" />
+						</div>
+						<div class="w-100"></div>
+						<div class="col m-2">
+							<label class="float-end">Confirm password: </label>
+						</div>
+						<div class="col m-2">
+							<input type="password"
+								th:placeholder="${#fields.hasErrors('matchingPassword')} ? ${#fields.errors('matchingPassword')[0]}"
+								th:field="*{matchingPassword}" />
+						</div>
+						<div class="w-100"></div>
+
+						<div class="d-flex justify-content-center">
+							<button class="btn btn-primary mt-3" type="submit">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<small class="my-2">or</small>
+			</div>
+			<div class="row">
+				<a class="btn btn-primary" th:href="@{/login}">Login</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- user already exist module -->
+	<div class="modal fade" id="loginModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Registration
+						error</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="res-input">
+					<div
+						th:text="${alreadyexists != null} ? 'Your username is already used'"></div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.js}"></script>
+
+	<div id="errors"
+		th:if="${(alreadyexists != null) and (alreadyexists == 'true')}">
+		<script>
+			let loginModal = new bootstrap.Modal(document
+					.getElementById('loginModal'), {
+				keyboard : false
+			});
+			loginModal.show();
+		</script>
+	</div>
+
+	<!-- user not same passwords module -->
+	<div class="modal fade" id="notMatchingPasswordsModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Registration
+						error</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="res-input">
+					<div
+						th:text="${notSamePasswords != null} ? 'Passwords must be the same.'"></div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.js}"></script>
+
+	<div id="errors2"
+		th:if="${(notSamePasswords != null) and (notSamePasswords == 'true')}">
+		<script>
+			let loginModal = new bootstrap.Modal(document
+					.getElementById('notMatchingPasswordsModal'), {
+				keyboard : false
+			});
+			loginModal.show();
+		</script>
+	</div>
+
+</body>
+</html>
