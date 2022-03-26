@@ -1,4 +1,6 @@
 # Digit Recognizer
+grudzień 2021 - styczeń 2022
+
 Projekt stworzony w dwuosobowym zespole.
 ## Opis
 Projekt został stworzony w ramach przedmiotu *Zaawanowane programowanie obiektowe i funkcyjne*. Jest implementacją serwisu internetowego, który pozwala użytkownikowi ręcznie narysować cyfrę, a następnie przesłać obraz do serwera, który poprzez sieć neuronową przewiduje, jaka to cyfra.
