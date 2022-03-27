@@ -9,7 +9,7 @@ Projekt stworzony w trzyosobowym zespole.
 Projekt został stworzony w ramach przedmiotu *techniki wizualizacji danych*. Jest to plakat ilustrujący wpływ produkcji żywności na środowisko. Zamieszczone na nim wykresy zostały wygenerowane przy pomocy bibliotek `ggplot2` i `seaborn`, po wcześniejszym preprocessingu danych w `dplyr`. 
 
 ## Moja rola
-* preprocessing danych;
+* preprocessing danych (`dplyr`);
 * utworzenie wykresów w `ggplot2`;
 * obróbka graficzna przy pomocy m.in. `inkscape`;
 

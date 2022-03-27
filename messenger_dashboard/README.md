@@ -15,19 +15,19 @@ Główne funkcjonalności:
 
 ## Moja rola
 * udział w tworzeniu UI i UX;
-* wytworzenie wiekszości wykresów z panelu indywidualnego;
-* preprocessing danych użytych przy generowaniu wykresów;
+* wytworzenie wiekszości wykresów z panelu indywidualnego (`plotly` i `ggplot2`);
+* preprocessing danych użytych przy generowaniu wykresów (`dplyr`);
 
 ## Galeria
 
-<p align="center">Panel wspólny:</p>
+<p align="center">Panel wspólny</p>
 
 <div align="center"><img src="./img/main_panel_1.png" alt="drawing" width="600"/></div>
 
 
 <div align="center"><img src="./img/main_panel_2.png" alt="drawing" width="600"/></div>
 
-<p align="center">Panel indywidualny:</p>
+<p align="center">Panel indywidualny</p>
 
 <div align="center"><img src="./img/secondary_panel_1.png" alt="drawing" width="600"/></div>
 

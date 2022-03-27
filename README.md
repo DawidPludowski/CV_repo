@@ -7,4 +7,3 @@ Niniejsze repozytorium zawiera prezentacje niektórych z moich archiwalnych proj
 * [Dashboard prezentujący aktywność w aplikacji Messenger](messenger_dashboard/);
 * [Plakat prezentujący wpływ produkcji żywności na środowisko](data_visualization_poster/);
 * [Disinformation fighter](disinformation_fighter/);
-* Aplikacja webowa TODO; (tymczasowo brak linku)

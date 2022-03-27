@@ -18,15 +18,15 @@ Główne funkcjonalności:
 
 ## Galeria
 
-<p align="center">Okno rejestracji:</p>
+<p align="center">Okno rejestracji</p>
 
 <div align="center"><img src="./img/register_panel.png" alt="drawing" width="400"/></div>
 
-<p align="center">Okno rysowania cyfry:</p>
+<p align="center">Okno rysowania cyfry</p>
 
 <div align="center"><img src="./img/main_panel.png" alt="drawing" width="400"/></div>
 
-<p align="center">Okno odpowiedzi serwera:</p>
+<p align="center">Okno odpowiedzi serwera</p>
 
 <div align="center"><img src="./img/response_panel.png" alt="drawing" width="400"/></div>
 

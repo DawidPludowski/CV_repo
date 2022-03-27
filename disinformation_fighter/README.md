@@ -17,20 +17,20 @@ Główne funkcjonalności:
 
 ## Moja rola
 * projekt UI i UX;
-* napisanie rozszerzenia do Chrome;
+* napisanie rozszerzenia do Chrome (`HTML`, `CSS`, `JS`);
 * labelowanie danych do uczenia modelu;
 
 ## Galeria
 
-<p align="center">Prototyp logo rozszerzenia:</p>
+<p align="center">Prototyp logo rozszerzenia</p>
 
 <div align="center"><img src="./img/twitter_logo.png" alt="drawing" width="400"/></div>
 
-<p align="center">Popup rozszerzenia:</p>
+<p align="center">Popup rozszerzenia</p>
 
 <div align="center"><img src="./img/popup.png" alt="drawing" height="400"/></div>
 
-<p align="center">Przykłady oznaczonych tweetów:</p>
+<p align="center">Przykłady oznaczonych tweetów</p>
 
 <div align="center"><img src="./img/marked_tweet_1.png" alt="drawing" width="400"/></div>
 
